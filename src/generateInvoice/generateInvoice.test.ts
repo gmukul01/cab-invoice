@@ -1,16 +1,17 @@
+import { Ride } from '../types/ride';
 import { generateInvoice } from './generateInvoice';
 
 describe('Invoice Generator Test', () => {
     it('should generate the expected invoice', () => {
-        const rides = [
-            { distance: 10.0, duration: 7.0 },
-            { distance: 3.0, duration: 10.0 }
+        const rides: Ride[] = [
+            { distance: 10.0, duration: 7.0, type: 'STANDARD' },
+            { distance: 3.0, duration: 10.0, type: 'PREMIUM' }
         ];
         const invoiceDetails = generateInvoice(rides);
 
-        expect(invoiceDetails.totalFare).toEqual(157.0);
+        expect(invoiceDetails.totalFare).toEqual(182);
         expect(invoiceDetails.numberOfRides).toEqual(2);
-        expect(invoiceDetails.averageFarePerRide).toEqual(78.5);
+        expect(invoiceDetails.averageFarePerRide).toEqual(91);
     });
 
     it('should generate the expected invoice with 0 rides', () => {

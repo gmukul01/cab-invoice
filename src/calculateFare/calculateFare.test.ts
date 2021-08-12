@@ -1,13 +1,14 @@
+import { Ride } from '../types/ride';
 import { calculateFare } from './calculateFare';
 
-describe('Ride Test', () => {
-    it('calculate the total fare for one ride for a given distance', () => {
-        const rideDetails = { distance: 10.0, duration: 0.0 };
-        expect(calculateFare(rideDetails)).toEqual(105.0);
+describe('calculateRide', () => {
+    it('should return expected result for standard ride', () => {
+        const rideDetails: Ride = { distance: 10, duration: 7, type: 'STANDARD' };
+        expect(calculateFare(rideDetails)).toEqual(112);
     });
 
-    it('calculate the total fare for a given distance and duration', () => {
-        const rideDetails = { distance: 10.0, duration: 7.0 };
-        expect(calculateFare(rideDetails)).toEqual(112.0);
+    it('should return expected result for premium ride', () => {
+        const rideDetails: Ride = { distance: 10, duration: 7, type: 'PREMIUM' };
+        expect(calculateFare(rideDetails)).toEqual(169);
     });
 });
